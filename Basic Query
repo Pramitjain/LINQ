@@ -1,5 +1,11 @@
 
 
 // Sum of Column from Datatable
-
 var sum = dt.AsEnumerable().Sum(x => x.Field<decimal>("ShipmentWeight"));
+
+// Default Column Value With Where Clause
+dtt.AsEnumerable().Where( dr => dr.Field<bool>("isDefault" ) )
+    .Select( dr => dr.Field<int>( "value" ) ).FirstOrDefault();
+    
+// Default Column Value without Where Clause
+   var sum = dt.AsEnumerable().Select(dr => dr.Field<int>("Mawb_Number")).FirstOrDefault();
