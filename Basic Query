@@ -1,0 +1,5 @@
+
+
+// Sum of Column from Datatable
+
+var sum = dt.AsEnumerable().Sum(x => x.Field<decimal>("ShipmentWeight"));
