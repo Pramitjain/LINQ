@@ -3,3 +3,17 @@
 
 dtpdfDetails.AsEnumerable().Where(s => Convert.ToString(s["f_HAWB_Number"]).Equals(HawBNo)).ToList().ForEach(D => D.SetField("f_ItemDetailsCount", itemDetailsCount));
                                 dtpdfDetails.AcceptChanges();
+                                
+
+docTblCSB2.AsEnumerable().Where(s => Convert.ToString(s["AirwayBillNumber"]).Equals(awb)).ToList().
+                        ForEach(D =>
+                        {
+                            D.SetField("GSTIN", gst.GSTIN);
+                            D.SetField("GSTInvNo", gst.GSTInvNo);
+                            D.SetField("NonGSTInvNo", gst.NonGSTInvNo);
+                            D.SetField("IsUsingIGST", gst.IsUsingIGST);
+                            D.SetField("UsingBondorUT", gst.UsingBondorUT);
+                            D.SetField("TotalIGST", gst.TotalIGST);
+                            D.SetField("FromApplication", gst.FromApplication);
+                            //D.SetField("TotalIGST", gst.TotalIGST);
+                        });
