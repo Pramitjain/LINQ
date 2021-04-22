@@ -1,0 +1,49 @@
+
+
+ var _region = (from p in _context.Region
+                                  join d in _context.UserProfile
+                                  on p.CreatedBy equals d.Id
+                                  select new Models.Region
+                                  {
+                                      Id = p.Id,
+                                      CustomerId = p.CustomerId,
+                                      Name = p.Name,
+                                      Status = p.Status,
+                                      Created = p.Created,
+                                      CreatedBy = p.CreatedBy,
+                                      Modified = p.Modified,
+                                      UpdatedBy = p.UpdatedBy,
+                                      CreatedBy1 = new userDetail
+                                      {
+                                          Id = d.Id,
+                                          DisplayName = d.DisplayName,
+                                          Modified = p.Modified,
+                                          Status = d.Status,
+                                          Created = p.Created,
+                                      }
+                                  }).ToList();
+
+==================================================================================================================
+
+   var _region = (from p in _context.Region
+                                  from d in _context.UserProfile
+                                  where p.CreatedBy == d.Id
+                                  select new Models.Region
+                                  {
+                                      Id = p.Id,
+                                      CustomerId = p.CustomerId,
+                                      Name = p.Name,
+                                      Status = p.Status,
+                                      Created = p.Created,
+                                      CreatedBy = p.CreatedBy,
+                                      Modified = p.Modified,
+                                      UpdatedBy = p.UpdatedBy,
+                                      CreatedBy1 = new userDetail
+                                      {
+                                          Id = d.Id,
+                                          DisplayName = d.DisplayName,
+                                          Modified = p.Modified,
+                                          Status = d.Status,
+                                          Created = p.Created,
+                                      }
+                                  }).ToList();
